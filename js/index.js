@@ -1,5 +1,5 @@
 actualizar_icono_carrito()
-addCartToHTML()
+addCartToHTML_index()
 
 
 let modelo_array = ["SE", "12", "13", "14", "15", "15 Plus", "15 Pro", "15 Pro Max"]

@@ -42,6 +42,38 @@ const addCartToHTML = () => {
     //iconCartSpan.innerText = totalQuantity;
 }
 
+const addCartToHTML_index = () => {
+    listCartHTML.innerHTML = '';
+    let totalQuantity = 0;
+    if(sistema.carrito.length > 0){
+        sistema.carrito.forEach(item => {
+            totalQuantity = totalQuantity +  item.cantidad;
+            let newItem = document.createElement('div');
+            newItem.classList.add('item');
+            newItem.dataset.id = item.id;
+
+            let positionProduct = sistema.productos.findIndex((value) => value.id == item.id);
+            let info = sistema.productos[positionProduct];
+            listCartHTML.appendChild(newItem);
+            newItem.innerHTML = `
+            <div class="image">
+                    <img src="./assets/images/${info.imagen}.webp">
+                </div>
+                <div class="name">
+                Iphone ${info.modelo}, ${info.color}, ${info.capacidad} GB
+                </div>
+                <div class="totalPrice">$${info.precio * item.cantidad}</div>
+                <div class="quantity">
+                    <span class="minus"><</span>
+                    <span>${item.cantidad}</span>
+                    <span class="plus">></span>
+                </div>
+            `;
+        })
+    }
+    //iconCartSpan.innerText = totalQuantity;
+}
+
 function cantidad_carrito() {
     total_articulos = 0
     sistema.carrito.forEach((elm) =>{
