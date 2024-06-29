@@ -13,7 +13,7 @@ const addCartToHTML_index = () => {
             listCartHTML.appendChild(newItem);
             newItem.innerHTML = `
             <div class="image">
-                    <img src="../assets/images/${info.imagen}.webp">
+                    <img src="./assets/images/${info.imagen}.webp">
                 </div>
                 <div class="name">
                 Iphone ${info.modelo}, ${info.color}, ${info.capacidad} GB
