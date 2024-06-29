@@ -9,6 +9,19 @@ let precio
 let capacidad
 let color
 
+// Se obtiene la capacidad del equipo seleccionado (por defecto)
+capacidad = get_capacity()
+// Se obtiene el color del equipo seleccionado (por defecto)
+color = get_color()
+// Se muestra el precio del equipo seleccionado (por defecto)
+muestra_precio(capacidad, color)
+// Se muestra la imagen del equipo seleccionado (por defecto)
+muestra_imagen(color)
+
+//precio = get_price("SE", 64, "negro")
+//let precio_texto = "$ " + precio
+//document.querySelector(".precio").innerText = precio_texto
+
 // Se identifican todos los botones
 let boton = document.querySelectorAll(".btn")
 
@@ -35,31 +48,14 @@ boton.forEach((btn, num) => {
             // Se le quita la clase de seleccionado a los botones previamente seleccionados (con el mismo objetivo: seleccionar capacidad o color)
             unselect_other_btns(seleccionado)
 
-            // Se obtiene la capacidad del equipo seleccionado
+            // Se obtiene la capacidad del equipo seleccionado (por defecto)
             capacidad = get_capacity()
-
-            // Se obtiene el color del equipo seleccionado
+            // Se obtiene el color del equipo seleccionado (por defecto)
             color = get_color()
-
-            // Se obtiene el precio del equipo seleccionado
-
-            if (capacidad && color) { // El precio sólo se calcula si ya se terminó de configurar el Iphone
-                precio = get_price("SE", capacidad, color)
-                let precio_texto = "$ " + precio
-                document.querySelector(".precio").innerText = precio_texto
-            }
-
-            // Se muestra la imagen correspondiente al color seleccionado
-            let imagen = document.querySelector(".img-fluid")
-
-            switch (color) {
-                case "negro":
-                    imagen.src = "../assets/images/SE_Negro.webp"
-                    break;
-                case "rojo":
-                    imagen.src = "../assets/images/SE_Rojo.webp"
-                    break;
-            }
+            // Se muestra el precio del equipo seleccionado (por defecto)
+            muestra_precio(capacidad, color)
+            // Se muestra la imagen del equipo seleccionado (por defecto)
+            muestra_imagen(color)
         })
     }
 })
@@ -166,6 +162,25 @@ function agregar_carrito(producto) {
     localStorage.setItem("saved_system", sistema_texto)
 }
 
+function muestra_precio(capacidad, color) {
+    if (capacidad && color) { // El precio sólo se calcula si ya se terminó de configurar el Iphone
+        precio = get_price("SE", capacidad, color)
+        let precio_texto = "$ " + precio
+        document.querySelector(".precio").innerText = precio_texto
+    }
+}
 
+function muestra_imagen(color) {
+    // Se muestra la imagen correspondiente al color seleccionado
+    let imagen = document.querySelector(".img-fluid")
 
+    switch (color) {
+        case "negro":
+            imagen.src = "../assets/images/SE_Negro.webp"
+            break;
+        case "rojo":
+            imagen.src = "../assets/images/SE_Rojo.webp"
+            break;
+    }
+}
 
